@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandan R | AWS Solutions Architect Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --aws-orange: #FF9900;
+            --aws-blue: #232F3E;
+            --bg-light: #f4f7f9;
+            --text-dark: #1a202c;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+        /* Navigation */
+        nav { background: var(--aws-blue); padding: 1rem 10%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .logo { color: white; font-weight: 800; font-size: 1.2rem; letter-spacing: 1px; }
+        .logo span { color: var(--aws-orange); }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 25px; }
+        nav a { text-decoration: none; color: #cbd5e0; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: var(--aws-orange); }
+
+        /* Hero Section */
+        .hero { background: linear-gradient(135deg, #232F3E 0%, #37475a 100%); color: white; padding: 120px 10% 80px; text-align: center; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.25rem; color: #a0aec0; max-width: 700px; margin: 0 auto 30px; }
+        .badge { display: inline-block; background: var(--aws-orange); color: var(--aws-blue); padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 20px; font-size: 0.9rem; }
+        .profile-placeholder { width: 150px; height: 150px; border-radius: 50%; background: #4a5568; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border: 4px solid var(--aws-orange); overflow: hidden; }
+        .profile-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Section Styling */
+        section { padding: 80px 10%; }
+        h2 { font-size: 2rem; margin-bottom: 40px; position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 50px; height: 4px; background: var(--aws-orange); }
+
+        /* About & Education */
+        .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; }
+        .edu-item { margin-bottom: 20px; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid var(--aws-blue); box-shadow: var(--card-shadow); }
+        .edu-item h4 { color: var(--aws-blue); }
+
+        /* Skills */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .skill-card { background: white; padding: 25px; border-radius: 12px; box-shadow: var(--card-shadow); border-top: 3px solid var(--aws-orange); }
+        .skill-card h3 { margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; }
+        .skill-card h3 i { margin-right: 10px; color: var(--aws-orange); }
+        .skill-list { list-style: none; font-size: 0.9rem; color: #4a5568; }
+        .skill-list li { margin-bottom: 8px; display: flex; align-items: center; }
+        .skill-list li::before { content: '✔'; margin-right: 8px; color: #38a169; font-weight: bold; }
+
+        /* Projects */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); transition: 0.3s; display: flex; flex-direction: column; }
+        .project-card:hover { transform: translateY(-10px); }
+        .project-header { background: var(--aws-blue); color: white; padding: 20px; }
+        .project-body { padding: 25px; flex-grow: 1; }
+        .project-body p { font-size: 0.9rem; color: #4a5568; margin-bottom: 15px; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .tech-tag { background: #edf2f7; color: #4a5568; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        .proj-links { border-top: 1px solid #eee; padding-top: 15px; }
+        .btn-link { text-decoration: none; color: var(--aws-orange); font-weight: bold; font-size: 0.85rem; margin-right: 15px; transition: 0.2s; }
+        .btn-link:hover { color: var(--aws-blue); }
+
+        /* Certifications & GitHub Profile */
+        .highlight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .highlight-card { background: white; padding: 30px; border-radius: 15px; box-shadow: var(--card-shadow); text-align: center; }
+
+        /* Contact & Resume */
+        .contact-box { background: var(--aws-blue); color: white; border-radius: 15px; padding: 50px; text-align: center; }
+        .resume-btn { display: inline-block; background: var(--aws-orange); color: var(--aws-blue); padding: 15px 35px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 10px; transition: 0.3s; border: none; cursor: pointer; }
+        .resume-btn:hover { background: #e68a00; transform: scale(1.05); }
+
+        footer { padding: 40px 10%; text-align: center; font-size: 0.9rem; color: #718096; }
+        .social-icons { margin-top: 20px; }
+        .social-icons a { color: white; font-size: 1.5rem; margin: 0 15px; transition: 0.3s; }
+        .social-icons a:hover { color: var(--aws-orange); }
+
+        @media (max-width: 768px) {
+            .about-grid, .highlight-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">AWS Cloud Developer<span> Portfolio</span></div> 
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="profile-placeholder">
+            <img src="chandanphoto.jpeg" alt="Chandan R">
+        </div>
+        <div class="badge">AWS Solutions Architect - Associate</div>
+        <h1>Chandan R</h1>
+        <p>AWS Cloud Developer. I bridge the gap between intelligent software and robust, scalable AWS environments.</p>
+        <a href="#projects" class="resume-btn" style="background: white; color: var(--aws-blue);">View My Work</a>
+    </section>
+
+    <section id="about">
+        <div class="about-grid">
+            <div>
+                <h2>About Me</h2>
+                <p>Detail-oriented IT professional with deep hands-on knowledge in Linux system administration and AWS cloud fundamentals. Graduated from RNS Institute of Technology with a B.E in Artificial Intelligence & Machine Learning (2025).</p>
+                <p style="margin-top:15px;"><strong>Career Objective:</strong> Seeking an entry-level opportunity in Linux Administration or Cloud Operations to contribute to infrastructure reliability and automation at <strong>Nimblix Technologies</strong>.</p>
+                <p style="margin-top:10px;"><strong>Areas of Interest:</strong> Infrastructure as Code (IaC), Cloud Security, Server Orchestration, and AI-driven Operations.</p>
+            </div>
+            <div>
+                <h2>Education</h2>
+                <div class="edu-item">
+                    <h4>B.E - AI & Machine Learning</h4>
+                    <p>RNS Institute of Technology</p>
+                    <p><strong>CGPA: 8.4</strong> | 2022 - 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" style="background: #fff;">
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3><i class="fab fa-linux"></i> Linux Admin</h3>
+                <ul class="skill-list">
+                    <li>Systemd & Process Management</li>
+                    <li>User/Group & ACL Security</li>
+                    <li>LVM & Partitioning</li>
+                    <li>Bash Scripting & Cron Jobs</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fab fa-aws"></i> AWS Cloud</h3>
+                <ul class="skill-list">
+                    <li>VPC Design (Subnets/NAT/IGW)</li>
+                    <li>EC2, Auto-Scaling & ALB</li>
+                    <li>S3 Lifecycle & Versioning</li>
+                    <li>IAM Least-Privilege Policies</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-tools"></i> Tools & DBs</h3>
+                <ul class="skill-list">
+                    <li>Git & Version Control</li>
+                    <li>AWS CLI Automation</li>
+                    <li>Apache/Nginx Configuration</li>
+                    <li>Basic SQL & NoSQL</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            <div class="project-card" style="border: 2px solid var(--aws-orange);">
+                <div class="project-header">
+                    <small>MAJOR PROJECT</small>
+                    <h3>EdgeServe Platform</h3>
+                </div>
+                <div class="project-body">
+                    <p>Secure Content Ingestion & Distribution Platform. Features a Linux-driven processing pipeline with VPC network isolation and S3 metadata tracking.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">VPC</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">IAM Security</span>
+                        <span class="tech-tag">S3</span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>VPC Setup & Networking</h3>
+                </div>
+                <div class="project-body">
+                    <p>Designed a custom VPC with public/private segmentation, NAT Gateways for secure routing, and Internet Gateways for public accessibility.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Networking</span>
+                        <span class="tech-tag">Architecture</span>
+                        <span class="tech-tag">Security Groups</span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>S3 Static Hosting</h3>
+                </div>
+                <div class="project-body">
+                    <p>Automated static site deployment with versioning and lifecycle policies for cost-efficient data protection and secure public access.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AWS S3</span>
+                        <span class="tech-tag">Automation</span>
+                        <span class="tech-tag">Bucket Policies</span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="highlights">
+        <div class="highlight-grid">
+            <div class="highlight-card">
+                <h2>GitHub Profile</h2>
+                <p>I actively contribute to open-source and document my AWS labs.</p>
+                <a href="https://github.com/chandan0719" target="_blank" class="resume-btn">Visit GitHub Profile</a>
+            </div>
+            <div class="highlight-card">
+                <h2>Certifications</h2>
+                <ul class="skill-list" style="text-align: left; display: inline-block;">
+                    <li><i class="fas fa-certificate" style="color: var(--aws-orange);"></i> AWS Solutions Architect Associate </li>
+                    <li><i class="fas fa-certificate" style="color: var(--aws-orange);"></i> Linux Administration </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" style="background: #fff; text-align: center;">
+        <h2>Resume</h2>
+        <p>Interested in the full details of my professional background?</p>
+        <a href="Chandan_Resume.pdf" class="resume-btn" download><i class="fas fa-file-pdf"></i> Download Resume (PDF)</a>
+    </section>
+
+    <section id="contact">
+        <div class="contact-box">
+            <h2>Get In Touch</h2>
+            <p>I am ready to bring my cloud expertise to your team.</p>
+            <div style="margin: 25px 0;">
+                <p><i class="fas fa-envelope"></i> chandanraki999@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 7338574067</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/chandan0719" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://in.linkedin.com/in/chandan-r-977a26162" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Chandan R | AWS Cloud Developer Portfolio</p>
+    </footer>
+
+    <script>
+        // Smooth scroll and active nav padding
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '0.7rem 10%';
+            } else {
+                nav.style.padding = '1rem 10%';
+            }
+        });
+    </script>
+</body>
+</html>
